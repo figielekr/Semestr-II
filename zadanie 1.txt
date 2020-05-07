@@ -1,0 +1,13 @@
+public class zadanie {
+    public static void main(String[] args) {
+        int ilosc=10;
+        int tab[] = {16,80,50,40,30,33,18,4,9,99};
+        int szukana = 33;
+        for (int i = 0; i<ilosc; i++){
+            if (szukana == tab[i]){
+                System.out.println("Liczba zostala znaleziona: "+tab[i]);
+                break;
+            }
+        }
+    }
+}
