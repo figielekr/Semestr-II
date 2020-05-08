@@ -1,0 +1,26 @@
+
+public class zadanie {
+    public static void main(String[] args) {
+        int[] tab = {6,2,3,5,8,9,4,12,15,13,14,18,19,23,25,26,24,28,29,80,50,40,35,34,33,12,15,16,18,22,23,22,23,80,90,80,11,15,18,19,13,16,17,17,2,5,55,66,44,50}; // Przykładowa tabela
+        int temporary;                          // Zmienna która będzie przechowywać liczbę do zamiany w tabeli z liczbą obok
+        for (int i=0; i<tab.length; i++){       // Pętla wyświetlająca tabelę bez zmiany - do porównania 
+            System.out.print(tab[i]+", ");
+        }
+        System.out.println();
+        for(int i=0; i<tab.length-1; i++){          // Pierwsza pętla 
+            for (int j=0; j<tab.length-1; j++) {    // Druga pętla
+                if (tab[j] > tab[j + 1]) {          // Porównanie dwóch liczb, jeśli liczba po prawej jest mniejsza, następuje zamiana
+                    temporary = tab[j];
+                    tab[j] = tab[j + 1];
+                    tab[j + 1] = temporary;
+                }
+            }
+        }
+        for (int i=0; i<tab.length; i++){           // Wyświetlenie drugiej, posortowanej tablicy
+            System.out.print(tab[i]+", ");
+        }
+        System.out.println();
+        //System.out.println(tab.length);
+    }
+}
+
