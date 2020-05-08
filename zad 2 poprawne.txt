@@ -1,0 +1,27 @@
+public class zadanie {
+    public static void main(String[] args) {
+        int[] tab = {1,2,4,6,10,15,16,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}; // Przykładowa tabela
+        //System.out.println(tab.length);
+        int[] tab2 = {0,7,8,9,3,11,12,13,18,19,14,5,17}; // Przykładowa tabela 2
+        int temporary;                                  // Zmienna wykorzystywana później do przestawiania tablicy
+        for (int i=0; i<tab2.length; i++){              // Wejście do pierwszej pętli
+            temporary=tab2[i];                          // Przypisanie wartości zmiennej w celu przyrównania do elementu tablicy
+            for(int j=0; j<tab.length; j++){            // Wejście do drugiej pętli
+                if (temporary<tab[j] || tab[j]==0 && tab[j+1]==0){      // Warunek przypisania wartości z drugiej pętli
+                    for(int k=tab.length-1; k>j; k--){          // Wejście do trzeciej pętli odpowiadającej za przestawienie elementów do przodu o k robiąc miejsce kolejnemu elementowi
+                       // tab[k-1]=tab[k];
+                        tab[k]=tab[k-1];
+                    }
+                    tab[j]=temporary;                   // Przypisanie wartości elementowi tablicy
+                    j=tab.length;                       // Spełnienie warunku, aby wyjść z pętli
+                }
+            }
+        }
+        for(int i=0; i<tab.length; i++){                // Pętla wyświetlająca tablicę
+            System.out.print(tab[i]+",");
+        }
+       // System.out.println();
+       // System.out.println(tab.length);
+    }
+}
+
