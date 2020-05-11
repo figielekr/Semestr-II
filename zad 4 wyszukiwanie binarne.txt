@@ -1,17 +1,33 @@
+import java.util.Scanner;
+
 public class zadanie {
     public static void main(String[] args) {
-
-        int ilosc = 1000000;                            //ustalamy ile chcemy elementów w tablicy
-        int ciag [] = new int[ilosc];               //tworzymy tablice
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Proszę podaj ile elementów ma zawierać tablica.");
+        int amount = scan.nextInt();                                             //ustalamy ile chcemy elementów w tablicy
+        System.out.println("Proszę podaj którego elemntu z tablicy mamy szukać.");
+        int search = scan.nextInt();                                            //wczytujemy z klawiatuty, którego elementu szukamy
+        for (;;) {                                                                 // wejście do pętli z której możemy wyjść dopiero jak podamy właściwą liczbę
+            if (search > amount || search < 1) {
+                System.out.println("Proszę podać liczbę z zakresu od 1 do " + amount);
+                search = scan.nextInt();
+            }
+            if (search <= amount && search >= 1){
+                break;
+            }
+        }
+        search--;
+        int ciag [] = new int[amount];               //tworzymy tablice
         ciag[0] = (int)(5*Math.random()+1);         //tworzymy pierwszy element
-
+        amount--;
         for (int i=1; i<ciag.length; i++){              //wejscie do petli generujacej kolejne elementy ciagu
             ciag[i]=(int)(5*Math.random()+1)+ciag[i-1];
         }
+        search = ciag[search];
        // for (int i=0; i<ciag.length; i++){          //petla wypisujaca elementy ciagu
        //     System.out.print(ciag[i]+", ");
        // }
-        int search = ciag[60];                          // typujemy jakiś element z listy
+       // int search = ciag[9999];                          // typujemy jakiś element z listy
         int first =0, last = ciag.length-1, middle = (first + last)/2;      // tworzymy trzy zmienne, których będziemy używać a kolejnej pętli
 
         for (;;){                                       // wejście do pętli
@@ -20,16 +36,16 @@ public class zadanie {
                 middle = (first + last)/2;
             }
             else if (ciag [middle] == search){              // jeśli element pętli odpowiada elementowi szukanemu wyświetlamy o tym informację na ekranie i przerywamy program
-                System.out.println("Znaleziono wyszukiwana liczbe, jest nia: "+ search + " " + ciag[60] );
+                System.out.println("Znaleziono wyszukiwana liczbe, jest nia: "+ search + " " );
                 break;
             }
             else if ( ciag[middle] < search){              // przyrównujemy środkowy element tablicy do wyszukiwanej liczby, jeśli jest większy
                 first=middle;                               // zmieniamy parametry zmiennej last i middle
                 middle = (last + first)/2;
+                if (middle == first && last - middle == 1){
+                    middle++;
+                }
             }
         }
     }
 }
-
-
-
