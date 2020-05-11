@@ -1,0 +1,19 @@
+import java.util.Scanner;
+
+public class zadanie {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        int ciag [] = new int[10];
+        for (int i=0; i<10 ; i++){
+            System.out.println("Proszę podać liczbę numer: "+(i+1));
+            ciag[i]=scan.nextInt();
+        }
+        System.out.print("Podane liczby to: ");
+        for (int i=0; i<10 ; i++){
+            System.out.print(ciag[i]+", ");
+        }
+    }
+}
+
+
+
