@@ -1,0 +1,30 @@
+public class zadanie {
+    public static void main(String[] args) {
+        int[] tab = {5,8,15,20,2,1,5,50,16,3};                  //deklaracja pierwszej listy
+        int tab2[] = new int[10];                                  //deklaracja drugiej listy
+        int temporary, temporary2=0, k=0;                       //deklaracja zmiennych
+
+
+        for (int i=0; i<tab.length; i++){                       //wejscie do pierwszej petli
+            temporary=tab[i];                                   //przypisanie wartosci pierwszego elementu tablicy do zmiennej, w celu późniejszego porównania z pozystałymi elementami tablicy
+            temporary2=tab[i];                                  //przypisanie wartosci drugiego elementu tablicy do zmiennej, ta zmienna z kolei będzie zbierała największe elementy, aby później
+            for (int j=0; j<tab.length; j++){                   //nadpisać pierwszą tablicę. Wejscie do drugiej petli
+                if (temporary>tab[j]){                          //Warunek sprawdzający, który element jest większy
+                    temporary=tab[j];
+                    k=j;                                        //Zmienna k zapisuje numer indeksu najmniejszego elementu ciągu
+                }
+                if (temporary2<tab[j]){                         //To samo co pierwszy warunek, ale dla największego elementu
+                    temporary2=tab[j]+1;
+                }
+            }
+            tab[k]=temporary2;                                  //Przypisanie największej wartości zbioru +1, aby w następnych cyklach, element był pomijany
+            tab2[i]=temporary;                                  //Dodanie elementu do drugiej tablicy
+        }
+        for(int i=0; i<tab2.length; i++){                        //Wyświetlenie tablicy
+            System.out.print(tab2[i]+", ");
+        }
+    }
+}
+
+
+
