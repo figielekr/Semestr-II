@@ -1,0 +1,40 @@
+/*Zadanie 8 -  Sortowanie przez proste wybieranie
+
+
+        1. Szukamy najmniejszego elementu
+        2. Po znalezieniu zamieniamy go miejscami z pierwszym (chyba że ten pierwszy jest  właśnie najmniejszy)
+        3. Operację powtarzamy dla drugiego elementu itd.*/
+
+public class untitled {
+    public static void main(String[] args) {
+        int [] tab = {5,4,1,2,10,15,18,22,24,28,16,13,0,100,55,66,44,88,55,13};         // tworzymy przykładową tabelę
+
+        for (int value : tab) {                       // pętla wyświetlająca nieposortowaną tabelę
+            System.out.print(value+" ");
+        }                                                       // if
+        System.out.println();
+
+        for (int i= 0; i<tab.length; i++){
+            int temporary = tab[i];                    // tworzymy zmienną, która pomoże nam później w sortowaniu
+            int smaller = tab[i];                      // zmienna pomagająca przy warunku if
+            int x = 0;
+            for (int j = 0; j<tab.length-i ; j++){     //pętla ograniczona do (długość pętli minus i - w celu pominięcia już wcześniej posortowanych el. - stąd minus i)
+                int xj = tab[tab.length-j-1];          //przypisanie wartości zmiennej xj 
+                if (xj<smaller){                       //prosty warunek if
+                    smaller = xj;
+                    x = tab.length-j-1;                //przypisanie wartości indeksu pierwotnego wektora
+                }
+            }
+            tab[i]= smaller;                           // przypisanie wartości
+            //System.out.println(x);
+            tab[x]= temporary;                         //przypisanie wartości
+            System.out.print(tab[i]+" ");
+
+        }
+        System.out.println();
+        /*for (int value : tab) {                       // pętla wyświetlająca posortowana tabelę
+            System.out.print(value+" ");
+        }*/
+
+    }
+}
