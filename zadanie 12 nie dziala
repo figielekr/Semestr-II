@@ -18,37 +18,48 @@ nie jest właściwe rozwiązanie.
 Właściwy algorytm polega na tym że odczytujemy po jednym elemencie z każdego wektora i mniejszy z nich zapisujemy w wynikowym. Nic tu nie trzeba kasować (pamiętać tylko co
 przeczytaliśmy) i działamy szybko.
 Algorytm jest prosty i wypada go znać.*/
+ //if (w==wek1.length){print1=false;bwek=true;bwek1=false;}
+// else if (b==a){wek2[i]=a; i++; wek2[i]=b; bwek=true;bwek1=true;}
 public class zad12
 {
     public static void main(String[] args) {
-        int[] wek = {13,57,89,95,100};
+        int[] wek = {13,57,89,95};
         int[] wek1 = {25,56,58,67,69,70,76};
         int[] wek2 = new int[wek.length+wek1.length];           //utworzenie nowego wektora o rozmiarze pierwszego i drugiego
         int x=0;
-        if (wek.length>wek1.length){x = wek1.length;}
-        else if (wek.length==wek1.length){x=wek.length;}
-        else{x = wek.length;}
-        int a=0,b=0,q=-1,w=-1;
-        boolean bwek = true, bwek1=true, print1 = true, print2=true;
+        //if (wek.length>wek1.length){x = wek1.length;}
+        //else if (wek.length==wek1.length){x=wek.length;}
+        //else{x = wek.length;}
+        int a=0,b=0,q=0,w=0;
+        boolean bwek = true, bwek1=true;// print1 = true, print2=true;
         for (int i =0; i < wek2.length; i++ ){
-            if (w==wek1.length){print1=false;bwek=true;bwek1=false;}
-            if (q==wek.length-1){print2=false;}
-            if (bwek){
-                q++;
+            //if (q==wek.length-1){print2=false;}
+            if (bwek&&q<wek.length){
                 a=wek[q];
                 bwek=false;
+                q++;
             }
-            if(bwek1){
-                w++;
+            if(bwek1&&w<wek1.length){
                 b=wek1[w];
                 bwek1=false;
+                w++;
             }
 
-            if (a<b&&print2){wek2[i]=a;bwek=true;}
-            else if(b<a&&print1){wek2[i]=b;bwek1=true;}
-            else if (b==a){wek2[i]=a; i++; wek2[i]=b; bwek=true;bwek1=true;}
+            if (a<b){wek2[i]=a;bwek=true;}
+            else if(b<a){wek2[i]=b;bwek1=true;}
             System.out.print(wek2[i]+" ");
-
+            if (wek.length==q){
+                for(int j=w-1; j<wek1.length;j++){
+                    System.out.print(wek1[j]+" ");
+                }
+                i=wek2.length-1;
+            }
+            if (wek1.length==w){
+                for(int j=q-1; j<wek.length;j++){
+                    System.out.print(wek[j]+" ");
+                }
+                i=wek2.length-1;
+            }
         }
 
         /*for (int i=0; i<wek2.length; i++){                      //wyświetlenie pętli
