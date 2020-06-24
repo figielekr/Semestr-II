@@ -1,0 +1,36 @@
+import java.util.Random;
+
+/*Zadanie 14  - Generujemy 15 elementowy wektor liczb całkowitych z przedziału 1-200 w taki sposób aby liczby się nie powtarzały.
+
+        Jedno rozwiązanie tego problemu już przećwuiczyliśmy - gnenrując narastający ciąg liczb losowych o małym skoku (zadanie 3). Jeżeli jednak kolejne liczby losowe tworzymy
+        z całego zakresu (tu: 1-200) a mają się nie powtarzać, zadanie
+        jest trudniejsze i ciekawsze - proszę spróbować.
+
+
+        Algorytm taki ma zastosowanie np. przy odtwarzaniu piosenek z wybranego zbioru w kolejności losowej. Ja korzystam z niego przy generowaniu numerów sprawdzanych
+        słówek (ze słownika 200)*/
+public class zad14 {
+    public static void main(String[] args) {
+        Random random = new Random();
+        int howMany = 15;
+        int bound = 200;
+        int[] tab = new int[howMany];
+        tab[0]=random.nextInt(bound)+1;                                     //generowanie pierwszego elementu
+        for (int i = 0; i<tab.length; i++){                                 //wejscie do pierwszej petli
+            boolean isFine = true;                                          //boolean true - jesli element sie powtorzy boolean przybiera wartosc false i petla ma sie wykonac ponownie
+            int x = random.nextInt(bound)+1;                                //generowanie losowego elementu z przedziału bound
+            for (int j = 0; j<tab.length; j++){                             //wejscie do petli sprawdzajacej czy wczesniej nie wystepuje element o tej samej wartosci
+                if (x==tab[j]){                                             //warunek if 
+                    i--;                                                    //jesli warunek true to zmniejsz i o 1, zeby petla sie wykonala dla wszystkich elementow tablicy
+                    isFine = false;                                         //jesli warunek true to boolean isFine = false
+                }
+            }
+            if (isFine){                                                    //jesli warunek = true, czyli element nie zostal wczesniej przypisany do tablicy to przypisz
+                tab[i]=x;                                                   //do tablicy o indeksie [i] wartosc x
+            }
+        }
+        for (int i=0; i<tab.length; i++){                                   //wyswietlenie petli
+            System.out.print(tab[i]+" ");
+        }
+    }
+}
