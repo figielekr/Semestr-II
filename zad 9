@@ -15,8 +15,8 @@ public class untitled {
         Random random = new Random();                                       //implementacja Random
         Scanner scanner = new Scanner(System.in);                           //implementacja scanner
         System.out.print("Podaj ile elementów ma zawierać zbiór kart: ");       //wysw komunikatu
-        //int howMany = scanner.nextInt();                                //zczytanie wartosci podanej przez uzytkownika
-        int howMany=60;
+        int howMany = scanner.nextInt();                                //zczytanie wartosci podanej przez uzytkownika
+        //int howMany=60;
         int x=0;
         int [] tab = new int[howMany];
         tab[0]=random.nextInt(howMany)+1;                        //generowanie pierwszego losowego elementu do którego później będą generowane kolejne losowe elementy
