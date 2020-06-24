@@ -12,35 +12,36 @@ import java.util.Scanner;
 
 public class untitled {
     public static void main(String[] args) {
-        Random random = new Random();
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Podaj ile elementów ma zawierać zbiór kart: ");
-        //int howMany = scanner.nextInt();
-        int howMany=10, x=0;
+        Random random = new Random();                                       //implementacja Random
+        Scanner scanner = new Scanner(System.in);                           //implementacja scanner
+        System.out.print("Podaj ile elementów ma zawierać zbiór kart: ");       //wysw komunikatu
+        //int howMany = scanner.nextInt();                                //zczytanie wartosci podanej przez uzytkownika
+        int howMany=60;
+        int x=0;
         int [] tab = new int[howMany];
         tab[0]=random.nextInt(howMany)+1;                        //generowanie pierwszego losowego elementu do którego później będą generowane kolejne losowe elementy
         for (int i=0; i< tab.length-1 ; i++){
-            int newElement = random.nextInt(howMany*3)+1;
-            boolean ifSet = false;
-            for (int k=0; k< tab.length; k++) {
+            int newElement = random.nextInt(howMany*3)+1;       //generowanie następnego elementu o wartości podanej przez użytkownika *3
+            boolean ifSet = false;                                      //boolean stanowiący o tym czy wartość będzie elementu o danym indeksie będzie zmieniona po wyjsciu z petli
+            for (int k=0; k< tab.length; k++) {                         //pętla zapisująca indeks elementu
                 if (newElement < tab[k]) {
                     x=k;
                     for (int j = 1; j < tab.length-k; j++) {
-                        tab[tab.length - j] = tab[tab.length - j - 1];
-                        ifSet = true;
+                        tab[tab.length - j] = tab[tab.length - j - 1];      //przesunięcie elementów, aby zrobic miejsce nowemu elementowi w jego miejscu
+                        ifSet = true;                                       //zmiana wartości na true - element będzie zmieniony po wyjściu z pętli
                     }
-                    k=tab.length;
+                    k=tab.length-1;                                           //wyjscie z petli
                 }
-                else if (k<howMany-1&&newElement>tab[k]&&tab[k+1]==0&&tab[k]!=0){
+                else if (k<howMany-1&&newElement>=tab[k]&&tab[k+1]==0&&tab[k]!=0){       //warunek ktory pozwala przypisac nowe elementy do wektora
                     tab[k+1]=newElement;
-                    k=tab.length;
+                    k=tab.length;                                                       //wyjscie z petli
                 }
             }
-            if (ifSet) {
+            if (ifSet) {                                                    //jesli boolean = true to przypisz elementowi tab[x] wartosc newElement
                 tab[x] = newElement;
             }
         }
-        for (int i=0;i<tab.length;i++){
+        for (int i=0;i<tab.length;i++){                                     //wyswietlenie petli
             System.out.print(tab[i]+" ");
         }
         System.out.println();
