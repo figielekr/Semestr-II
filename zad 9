@@ -1,0 +1,49 @@
+/*Zadanie 9
+        Sortowanie przez proste wstawianie
+
+        Przypomnijmy sobie słowny opis (dla przykładowego sortowania kart, gdzie często ten algorytm się stosuje):
+
+        1. Porównujemy 1 kartę z drugą i zamieniamy je miejscami, tak aby najmłodsza (lub najstarsza – jak wolimy) była na początku
+        2. Trzecią kartę wstawiamy w odpowiednie miejsce – na początku, pomiędzy pierwszą a drugą lub pozostawiamy tam gdzie jest
+        3. Szukamy właściwego miejsca dla kolejnej karty – przeglądając fragment już ułożony – wstawiamy ją pomiędzy inne. Powtarzamy tę operację dla wszystkich pozostałych kart*/
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class untitled {
+    public static void main(String[] args) {
+        Random random = new Random();
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Podaj ile elementów ma zawierać zbiór kart: ");
+        //int howMany = scanner.nextInt();
+        int howMany=10, x=0;
+        int [] tab = new int[howMany];
+        tab[0]=random.nextInt(howMany)+1;                        //generowanie pierwszego losowego elementu do którego później będą generowane kolejne losowe elementy
+        for (int i=0; i< tab.length-1 ; i++){
+            int newElement = random.nextInt(howMany*3)+1;
+            boolean ifSet = false;
+            for (int k=0; k< tab.length; k++) {
+                if (newElement < tab[k]) {
+                    x=k;
+                    for (int j = 1; j < tab.length-k; j++) {
+                        tab[tab.length - j] = tab[tab.length - j - 1];
+                        ifSet = true;
+                    }
+                    k=tab.length;
+                }
+                else if (k<howMany-1&&newElement>tab[k]&&tab[k+1]==0&&tab[k]!=0){
+                    tab[k+1]=newElement;
+                    k=tab.length;
+                }
+            }
+            if (ifSet) {
+                tab[x] = newElement;
+            }
+        }
+        for (int i=0;i<tab.length;i++){
+            System.out.print(tab[i]+" ");
+        }
+        System.out.println();
+        //System.out.println(tab.length);
+    }
+}
