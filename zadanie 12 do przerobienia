@@ -30,40 +30,40 @@ public class zad12
         //if (wek.length>wek1.length){x = wek1.length;}
         //else if (wek.length==wek1.length){x=wek.length;}
         //else{x = wek.length;}
-        int a=0,b=0,q=0,w=0;
-        boolean bwek = true, bwek1=true;// print1 = true, print2=true;
+        int a=0,b=0,q=0,w=0,temporaryA=0,temporaryB=0;
+        boolean krotszy = true, dluzszy=true;// print1 = true, print2=true;
         for (int i =0; i < wek2.length; i++ ){
-            //if (q==wek.length-1){print2=false;}
-            if (bwek&&q<wek.length){
-                a=wek[q];
-                bwek=false;
-                q++;
-            }
-            if(bwek1&&w<wek1.length){
-                b=wek1[w];
-                bwek1=false;
-                w++;
-            }
-
-            if (a<b){wek2[i]=a;bwek=true;}
-            else if(b<a){wek2[i]=b;bwek1=true;}
+               if (krotszy&&q<wek.length){
+                   a=wek[q];
+                   //q++;
+                   krotszy=false;
+               }
+               if (dluzszy&&w<wek1.length){
+                   b=wek1[w];
+                   //w++;
+                   dluzszy=false;
+               }
+               if (a<b || w==wek1.length){
+                   if(w>=wek1.length){
+                       wek2[i]=a;
+                   }
+                   if(q<wek.length) {
+                       q++;
+                       krotszy = true;
+                       wek2[i]=a;
+                   }
+                                  }
+               if (b<a || q==wek1.length ){
+                   if(q>=wek1.length){
+                       wek2[i]=b;
+                   }
+                   else if(w<wek1.length) {
+                       w++;
+                       dluzszy = true;
+                       wek2[i]=b;
+                   }
+               }
             System.out.print(wek2[i]+" ");
-            if (wek.length==q){
-                for(int j=w-1; j<wek1.length;j++){
-                    System.out.print(wek1[j]+" ");
-                }
-                i=wek2.length-1;
-            }
-            if (wek1.length==w){
-                for(int j=q-1; j<wek.length;j++){
-                    System.out.print(wek[j]+" ");
-                }
-                i=wek2.length-1;
-            }
         }
-
-        /*for (int i=0; i<wek2.length; i++){                      //wyświetlenie pętli
-            System.out.print(wek2[i]+" ");
-        }*/
     }
 }
