@@ -23,33 +23,33 @@ Algorytm jest prosty i wypada go znać.*/
 public class zad12
 {
     public static void main(String[] args) {
-        int[] wek = {13,57,89,95,108,116};
-        int[] wek1 = {25,56,58,67,69,70,76,107};
+        int[] wek = {13,57,89,95};
+        int[] wek1 = {25,56,58,67,69,70,76};
         int[] wek2 = new int[wek.length+wek1.length];           //utworzenie nowego wektora o rozmiarze pierwszego i drugiego
-        int x=0, y=0;
         //if (wek.length>wek1.length){x = wek1.length;}
         //else if (wek.length==wek1.length){x=wek.length;}
         //else{x = wek.length;}
 
-        int a=0,b=wek[0],q=0,w=0,temporaryA=0,temporaryB=0;
-        boolean krotszy = true, dluzszy=true, found = true, print2=true;
+        int a=0,q=0,w=0,x=0, y=0;                               //utworzenie zmienneych potrzebnych do utworzenia kolejnych warunkoww
+        boolean found = true;                                          //boolean czy znaleziono czy nie znaleziono
 
-        for (int i =0; i < wek2.length; i++ ){
+        for (int i =0; i < wek2.length; i++ ){                  //petla wykonujaca sie tyle razy ile elementow bedzie w nowej tablicy
             //q=0;w=0;
             found=true;
-            while(found){
-                if(q==wek.length){
-                    x*=3;
-                    break;
+            while(found){                                       //dopóki found = true, pętla się wykonuje
+                if(q==wek.length){                              //jeśli osiagnięto maksymalny pułap indeksów tablicy wek 
+                    x*=3;                                       //pomnóż ostatni element *3, aby był większy niż następne elementy tablicy wek1
+                    break;                                      //i zakończ pętlę
                 }
-                if(wek[q]>a){
-                    x=wek[q];
-                    found=false;
+                if(wek[q]>a){                                   //jeśli element talibyc q jest wiekszy od a
+                    x=wek[q];                                   //zmien wartosc x na element talbicy wek o indeksie q
+                    found=false;                                //zmien wartosc boolean found na false, aby wyjść z pętli
                 }
-                else q++;
+                else q++;                                       //jeśli element tablicy wek o indeksie q jest mniejszy od a zmień numer indeksu o 1 w górę
             }
-            found=true;
-            while(found){
+            found=true;                                         //zmień wartość boolean na true, aby wejść do kolejnej pętli
+            
+            while(found){                                       //w tej pętli wszystko wykonuje się analogicznie do pętli pierwszej (while)
                 if(w==wek1.length){
                     y*=3;
                     break;
@@ -60,12 +60,12 @@ public class zad12
                 }
                 else w++;
             }
-            if(x>y){
-                wek2[i]=y;
-                System.out.print(wek2[i]+" ");
-                a=y;
+            if(x>y){                                            //jeżeli x>y
+                wek2[i]=y;                                      //przypisz elementowi i tablicy wek2 wartosc y
+                System.out.print(wek2[i]+" ");                  //oraz wypisz ten element
+                a=y;                                            //i przypisz zmiennej a wartosc y, aby w kolejnych pętlach while, można było przyrównać kolejne elementy do a
             }
-            else {wek2[i]=x; a=x;System.out.print(wek2[i]+" ");}
+            else {wek2[i]=x; a=x;System.out.print(wek2[i]+" ");}    
         }
     }
 }
